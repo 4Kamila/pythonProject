@@ -64,6 +64,7 @@ class Human:
         self.money += self.job.salary
         self.gladness -= self.job.gladness_less
         self.satiety -= 4
+        self.pet_gladness -= 2
 
     def shopping(self, manage):
         if self.car.drive():
@@ -87,6 +88,12 @@ class Human:
             self.gladness += 10
             self.satiety += 2
             self.money -= 15
+        elif manage == "pet_food":
+            print("I bought food for pet")
+            self.pet_gladness += 5
+            self.pet_satiety += 2
+            self.money -= 30
+            self.pet.food += 30
 
     def chill(self):
         self.gladness += 10
@@ -99,7 +106,9 @@ class Human:
     def to_repair(self):
         self.car.strength += 100
         self.money -= 50
-
+    def vet(self):
+        self.pet.health += 100
+        self.money -= 50
     def days_indexes(self, day):
         day = f" Today the {day} of {self.name}'s life "
         print(f"{day:=^50}", "\n")
@@ -116,6 +125,11 @@ class Human:
         print(f"{car_indexes:^50}", "\n")
         print(f"Fuel – {self.car.fuel}")
         print(f"Strength – {self.car.strength}")
+        pet_indexes = f"{self.pet.breed} pet indexes"
+        print(f"{pet_indexes:^50}", "\n")
+        print(f"Health – {self.pet.health}")
+        print(f"Satiety – {self.pet_satiety}")
+        print(f"Gladness – {self.pet_gladness}")
 
     def is_alive(self):
         if self.gladness < 0:
@@ -187,7 +201,8 @@ class Auto:
         self.strength = brand_list[self.brand]["strength"]
         self.consumption=brand_list[self.brand]["consumption"]
 
-    def drive(self):
+    def drive(self):/
+    33
         if self.strength > 0 and self.fuel >= self.consumption:
             self.fuel -= self.consumption
             self.strength -= 1
@@ -200,6 +215,7 @@ class House:
     def __init__(self):
         self.mess = 0
         self.food = 0
+        self.pet.food = 0
 
 job_list = {
  "Java developer":
