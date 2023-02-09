@@ -201,8 +201,7 @@ class Auto:
         self.strength = brand_list[self.brand]["strength"]
         self.consumption=brand_list[self.brand]["consumption"]
 
-    def drive(self):/
-    33
+    def drive(self):
         if self.strength > 0 and self.fuel >= self.consumption:
             self.fuel -= self.consumption
             self.strength -= 1
