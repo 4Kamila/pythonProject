@@ -10,9 +10,10 @@ class Human:
         self.home = home
         self.pet = pet
 
+
     def get_pet(self):
         self.pet = Pet(pet_list)
-        self.pet = Pet(pet_breed)
+        # self.pet = Pet(pet_breed)
     def get_home(self):
         self.home = House()
 
@@ -21,11 +22,7 @@ class Human:
 
 
     def get_job(self):
-        if self.pet.health >= 10:
-            pass
-        else:
-            self.vet()
-            return
+
         if self.car.drive():
             pass
         else:
@@ -34,7 +31,7 @@ class Human:
         self.job = Job(job_list)
 
     def eat(self):
-        if self.pet.food <= 0:
+        if self.pet_food <= 0:
             self.shopping("pet.food")
         else:
             if self.pet_satiety >= 100:
@@ -93,7 +90,7 @@ class Human:
             self.pet_gladness += 5
             self.pet_satiety += 2
             self.money -= 30
-            self.pet.food += 30
+            self.pet_food += 30
 
     def chill(self):
         self.gladness += 10
@@ -111,7 +108,7 @@ class Human:
         self.car.strength += 100
         self.money -= 50
     def vet(self):
-        self.pet.health = 100
+        self.pet_health = 100
         self.money -= 50
         self.pet_gladness -= 5
     def play_w_pet(self):
@@ -119,7 +116,7 @@ class Human:
         self.pet_gladness += 10
     def feed_pet(self):
         self.pet_satiety += 5
-        self.pet.food -= 5
+        self.pet_food -= 5
 
 
 
@@ -141,7 +138,7 @@ class Human:
         print(f"Strength – {self.car.strength}")
         pet_indexes = f"{self.pet.breed} pet indexes"
         print(f"{pet_indexes:^50}", "\n")
-        print(f"Health – {self.pet.health}")
+        print(f"Health – {self.pet_health}")
         print(f"Satiety – {self.pet_satiety}")
         print(f"Gladness – {self.pet_gladness}")
 
@@ -171,8 +168,8 @@ class Human:
                   f"{self.job.job} with salary {self.job.salary}")
         if self.pet is None:
             self.get_pet()
-            print(f"I don't have a pet, I'm gonna choose a job "
-                  f"I have a {self.pet_list} , breeds {self.pet_breed}")
+            print(f"I'm bored, so I'm gonna choose a pet "
+                  f"I have a {self.pet_list} !")
         self.days_indexes(day)
         dice = random.randint(1, 4)
         if self.satiety < 20:
@@ -215,18 +212,38 @@ class Human:
 pet_list = {
     "Cat":{"health": 50, "gladness": 60, "satiety": 80},
     "Dog":{"health": 40, "gladness": 80, "satiety": 100},
-    "Parot":{"health": 100, "gladness": 90, "satiety": 60},
+    "Parrot":{"health": 100, "gladness": 90, "satiety": 60},
 }
-pet_breed = {
-
+cat_breed = {
+    "british shorthair",
+    "scottish fold",
 }
-
+dog_breed = {
+    "german shepherd",
+    "golden retriever",
+}
+parrot_breed = {
+    "cockatiel",
+    "macaw",
+}
 class Pet:
     def __init__(self, pet_list):
         self.pet = random.choice(list(pet_list))
         self.pet_health = pet_list[self.pet]["health"]
         self.pet_gladness = pet_list[self.pet]["gladness"]
         self.pet_satiety = pet_list[self.pet]["satiety"]
+        if self.pet == "Cat":
+            self.pet = Pet(cat_breed)
+            self.pet = random.choice(list(cat_breed))
+        if self.pet == "Dog":
+            self.pet = Pet(dog_breed)
+            self.pet = random.choice(list(dog_breed))
+        elif self.pet == "Parrot":
+            self.pet = Pet(parrot_breed)
+            self.pet = random.choice(list(parrot_breed))
+
+
+
 
 brands_of_car = {
     "BMW": {"fuel": 100, "strength": 100, "consumption": 6},
@@ -253,7 +270,7 @@ class House:
     def __init__(self):
         self.mess = 0
         self.food = 0
-        self.pet.food = 0
+        self.pet_food = 0
 
 job_list = {
  "Java developer":
