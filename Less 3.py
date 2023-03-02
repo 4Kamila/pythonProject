@@ -1,6 +1,6 @@
 import random
 import logging
-logging.basicConfig(level=logging.INFO, filename="logs.log", filemode="w",format="Today is a new day: %(asctime)s")
+logging.basicConfig(level=logging.DEBUG, filename="logs.log", filemode="w", format=" %(asctime)s:%(message)s" )
 
 class Human:
     def __init__(self, name="Human", job=None, home=None, car=None):
@@ -63,10 +63,12 @@ class Human:
                 return
         if manage == "fuel":
             print("I bought fuel")
+            logging.info("I bought fuel")
             self.money -= 100
             self.car.fuel += 100
         elif manage == "food":
             print("Bought food")
+            logging.info("Bought food")
             self.money -= 50
             self.home.food += 50
         elif manage == "delicacies":
@@ -122,6 +124,7 @@ class Human:
         if self.home is None:
             print("Settled in the house")
             self.get_home()
+            logging.info("Housewarming!")
         if self.car is None:
             self.get_car()
             print(f"I bought a car{self.car.brand}")
@@ -147,18 +150,23 @@ class Human:
             self.work()
         elif self.car.strength < 15:
             print("I need to repair my car")
+            logging.info("Repair car")
             self.to_repair()
         elif dice == 1:
             print("Let`s chill!")
+            logging.info("Chill time!")
             self.chill()
         elif dice == 2:
             print("Start working")
+            logging.info("Time to work!")
             self.work()
         elif dice == 3:
             print("Cleaning time!")
+            logging.info("Cleaning time!")
             self.clean_home()
         elif dice == 4:
             print("Time for treats!")
+            logging.info("Time for treats!")
             self.shopping(manage="delicacies")
 
 brands_of_car = {
