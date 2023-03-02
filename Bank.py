@@ -1,14 +1,19 @@
-from bs4 import BeautifulSoup
-import requests
 
+import requests
+from bs4 import BeautifulSoup
 response = requests.get("https://www.oschadbank.ua/currency-rate")
+
 if response.status_code == 200:
-    soup = BeautifulSoup(float(response.text, features="html.parser"))
-    soup_list = soup.find_all("td")
-    res = soup_list[0].find("span")
-    print(float(res.text))
-# class Converter:
-#     def __init__(self):
-#         a = int(input("Введіть бажану суму: "))
-#         print(a*res.text)
-# bank = Converter()
+    soup = BeautifulSoup(response.text, features="html.parser")
+    soup_list = soup.find_all("td",{"class":"heading-block-currency-rate__table-col"})
+    res = soup_list[10]
+b = float(res.text)
+print(b)
+class Converter:
+    def __init__(self):
+        a = float(input("Введіть бажану суму: "))
+        d = a*b
+        print(d)
+
+bank = Converter()
+

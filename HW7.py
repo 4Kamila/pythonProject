@@ -29,21 +29,21 @@ def checker(*exc_types):
 @checker(NameError, TypeError, SyntaxError, ZeroDivisionError)
 def calculate(expression):
     a = float(input("a = "))
-    b = float(input("b = "))
-    c = input("sign: ")
-    if c == "+":
-        r = a + b
-        print(a, '+', b, '=', r)
-    elif c == "-":
-        m = a - b
-        print(a, '-', b, '=', m)
-    elif c == "*":
-        l = a * b
-        print(a, '*', b, '=', l)
-    elif c == "/":
-        h = a * b * c * d
-        print(a, '/', b, '=', h)
-    else:
-        print("Виберіть іншу дію!")
+    # b = float(input("b = "))
+    # c = input("sign: ")
+    # if c == "+":
+    #     r = a + b
+    #     print(a, '+', b, '=', r)
+    # elif c == "-":
+    #     m = a - b
+    #     print(a, '-', b, '=', m)
+    # elif c == "*":
+    #     l = a * b
+    #     print(a, '*', b, '=', l)
+    # elif c == "/":
+    #     h = a / b
+    #     print(a, '/', b, '=', h)
+    # else:
+    #     print("Виберіть іншу дію!")
     return eval(expression)
-calculate("5*5")
+calculate(a)
