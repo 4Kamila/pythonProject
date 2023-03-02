@@ -28,7 +28,7 @@ def checker(*exc_types):
     return checker
 @checker(NameError, TypeError, SyntaxError, ZeroDivisionError)
 def calculate(expression):
-    a = float(input("a = "))
+
     # b = float(input("b = "))
     # c = input("sign: ")
     # if c == "+":
@@ -46,4 +46,5 @@ def calculate(expression):
     # else:
     #     print("Виберіть іншу дію!")
     return eval(expression)
+a = input("a = ")
 calculate(a)
