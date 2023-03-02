@@ -46,5 +46,5 @@ def calculate(expression):
     # else:
     #     print("Виберіть іншу дію!")
     return eval(expression)
-a = input("a = ")
+a = input("Введіть бажаний вираз: ")
 calculate(a)
