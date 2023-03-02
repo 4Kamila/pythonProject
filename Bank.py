@@ -12,7 +12,7 @@ print(b)
 class Converter:
     def __init__(self):
         a = float(input("Введіть бажану суму: "))
-        d = a*b
+        d = a/b
         print(d)
 
 bank = Converter()
