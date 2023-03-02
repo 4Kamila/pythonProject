@@ -1,6 +1,6 @@
 import random
 import logging
-logging.basicConfig(level=logging.INFO, filename="logs.log", filemode="w",format="%(asctime)s")
+logging.basicConfig(level=logging.INFO, filename="logs.log", filemode="w",format="Today is a new day: %(asctime)s")
 
 class Human:
     def __init__(self, name="Human", job=None, home=None, car=None):
@@ -52,7 +52,7 @@ class Human:
         self.satiety -= 4
 
     def shopping(self, manage):
-        logging.debug("debug")
+        logging.info("Time to shopping!")
         if self.car.drive():
             pass
         else:
@@ -90,7 +90,7 @@ class Human:
     def days_indexes(self, day):
         day = f" Today the {day} of {self.name}'s life "
         print(f"{day:=^50}", "\n")
-        logging.info("Today is a new day!%(asctime)s")
+        logging.info("Today is a new day!")
         human_indexes = self.name + "'s indexes"
         print(f"{human_indexes:^50}", "\n")
         print(f"Money – {self.money}")
